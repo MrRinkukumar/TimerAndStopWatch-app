@@ -1,0 +1,24 @@
+.digital-watch-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.time {
+  font-size: 4rem;
+}
+.digital-watch-display {
+  font-size: 4rem;
+}
+
+.digital-watch-animation {
+  animation: digital-watch-animation 1s linear infinite;
+}
+
+@keyframes digital-watch-animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
