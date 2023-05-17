@@ -1,24 +1,15 @@
 .digital-watch-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 }
-.time {
-  font-size: 4rem;
+time {
+  position: absolute;
+  margin-top: 60px;
 }
 .digital-watch-display {
-  font-size: 4rem;
-}
-
-.digital-watch-animation {
-  animation: digital-watch-animation 1s linear infinite;
-}
-
-@keyframes digital-watch-animation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  display: flex;
+  flex-direction: raw;
+  height: fit-content;
 }

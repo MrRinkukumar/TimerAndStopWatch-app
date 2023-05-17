@@ -4,60 +4,113 @@
   align-items: center;
 }
 
-.stopwatch-display {
-  font-size: 4rem;
-  margin: 1rem;
+.stopwatch-controls {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 150px;
+  display: flex;
 }
 
-.stopwatch-btn-start {
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
+.stopwatch-btn {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 30px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
   border: none;
-  background-color: #3f51b5;
+  background-color: #5fead1;
   color: #fff;
-  border-radius: 4px;
-  margin: 0.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-.stopwatch-btn-resume {
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
-  border: none;
-  background-color: #3f51b5;
-  color: #fff;
-  border-radius: 4px;
-  margin: 0.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-.stopwatch-btn-pause {
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
-  border: none;
-  background-color: #3f51b5;
-  color: #fff;
-  border-radius: 4px;
-  margin: 0.5rem;
+  border-radius: 50%;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 .stopwatch-btn:hover {
-  background-color: #1a237e;
+  background-color: #5fead1;
 }
 
 .stopwatch-btn:active {
   transform: scale(0.95);
 }
-.stopwatch-btn-reset {
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
-  border: none;
-  background-color: #bfc1cc;
-  color: #fff;
-  border-radius: 4px;
-  margin: 0.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: #131723;
+  border: 3px solid #3c3c3c;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 150px;
+  font-family: sans-serif;
+  font-size: 20px;
+  color: #5fead1;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px#5fead1;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+time {
+  position: absolute;
+  font-size: 18px;
+}
+.ring:before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top: 3px solid #5fead1;
+  border-right: 3px solid #5fead1;
+  border-radius: 50%;
+  animation: animateC 2s linear infinite;
+}
+span {
+  display: block;
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 50%;
+  width: 50%;
+  height: 4px;
+  background: transparent;
+  transform-origin: left;
+  animation: animate 2s linear infinite;
+}
+span:before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #5fead1;
+  top: -6px;
+  right: -8px;
+  box-shadow: 0 0 20px #464319;
+}
+@keyframes animateC {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
 }

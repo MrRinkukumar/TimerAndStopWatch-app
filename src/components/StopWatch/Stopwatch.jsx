@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./StopWatch.css";
+import { VscDebugStart } from "react-icons/vsc";
+import { BsFillStopFill } from "react-icons/bs";
+import { SlRefresh } from "react-icons/sl";
+import { RxResume } from "react-icons/rx";
+
 function Stopwatch() {
   const [time, setTime] = useState(0);
-  const [isActive, setIsActive] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+
   const intervalRef = useRef(null);
 
   useEffect(() => {
@@ -11,8 +15,6 @@ function Stopwatch() {
   }, []);
 
   const handleStart = () => {
-    setIsActive(true);
-    setIsPaused(true);
     intervalRef.current = setInterval(() => {
       setTime((time) => time + 10);
     }, 10);
@@ -20,11 +22,9 @@ function Stopwatch() {
 
   const handlePause = () => {
     clearInterval(intervalRef.current);
-    setIsPaused(false);
   };
 
   const handleResume = () => {
-    setIsPaused(true);
     intervalRef.current = setInterval(() => {
       setTime((time) => time + 10);
     }, 10);
@@ -32,8 +32,7 @@ function Stopwatch() {
 
   const handleReset = () => {
     clearInterval(intervalRef.current);
-    setIsActive(false);
-    setIsPaused(false);
+
     setTime(0);
   };
 
@@ -47,28 +46,27 @@ function Stopwatch() {
 
   return (
     <div className="stopwatch-container">
-      <div className="stopwatch-display">{formatTime()}</div>
+      <div class="ring">
+        <time>Stopwatch</time>
+        {formatTime()}
+        <span></span>
+      </div>
       <div className="stopwatch-controls">
-        {!isActive && !isPaused && (
-          <button className="stopwatch-btn-start" onClick={handleStart}>
-            Start
-          </button>
-        )}
-        {isPaused && (
-          <button className="stopwatch-btn-pause" onClick={handlePause}>
-            Pause
-          </button>
-        )}
-        {!isPaused && isActive && (
-          <button className="stopwatch-btn-resume" onClick={handleResume}>
-            Resume
-          </button>
-        )}
-        {(isActive || isPaused) && (
-          <button className="stopwatch-btn-reset" onClick={handleReset}>
-            Reset
-          </button>
-        )}
+        <button className="stopwatch-btn" onClick={handleStart}>
+          <VscDebugStart />
+        </button>
+
+        <button className="stopwatch-btn" onClick={handlePause}>
+          <BsFillStopFill />
+        </button>
+
+        <button className="stopwatch-btn" onClick={handleResume}>
+          <RxResume />
+        </button>
+
+        <button className="stopwatch-btn" onClick={handleReset}>
+          <SlRefresh />
+        </button>
       </div>
     </div>
   );

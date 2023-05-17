@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./timer.css";
+import { VscDebugStart } from "react-icons/vsc";
+import { BsFillStopFill } from "react-icons/bs";
+import { SlRefresh } from "react-icons/sl";
 function Timer() {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -32,23 +35,28 @@ function Timer() {
   const formattedTime = new Date(time).toISOString().substr(14, 5);
 
   return (
-    <div className="timer-container">
-      <div className="timer-display">{formattedTime}</div>
+    <>
+      <div className="timer-container">
+        <div class="ring">
+          <time>Timer</time>
+          {formattedTime}
+          <span></span>
+        </div>
+      </div>
       <div className="timer-btn-container">
-        {!isRunning ? (
-          <button className="timer-btn-start" onClick={handleStart}>
-            Start
-          </button>
-        ) : (
-          <button className="timer-btn-pause" onClick={handlePause}>
-            Pause
-          </button>
-        )}
-        <button className="timer-btn-reset" onClick={handleReset}>
-          Reset
+        <button className="timer-btn" onClick={handleStart}>
+          <VscDebugStart />
+        </button>
+
+        <button className="timer-btn" onClick={handlePause}>
+          <BsFillStopFill />
+        </button>
+
+        <button className="timer-btn" onClick={handleReset}>
+          <SlRefresh />
         </button>
       </div>
-    </div>
+    </>
   );
 }
 
