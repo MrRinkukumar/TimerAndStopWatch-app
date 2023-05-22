@@ -1,6 +1,6 @@
 import "./App.css";
 import AppRoutes from "./AppRoutes";
-import { Navbar, Footer } from "./components";
+import { Navbar } from "./components";
 
 const App = () => {
   return (
@@ -10,7 +10,6 @@ const App = () => {
         <main>
           <AppRoutes />
         </main>
-        <Footer />
       </div>
     </>
   );
